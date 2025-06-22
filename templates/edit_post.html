@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if post %}Edit Post{% else %}Add Post{% endif %}{% endblock %}
+
+{% block content %}
+  <h1>{% if post %}Edit Post{% else %}Add New Post{% endif %}</h1>
+  <form method="post">
+    <div class="form-group">
+      <label class="title" for="title">Title</label>
+      <input type="text" class="form-control" id="title" name="title" value="{{ post.title if post else '' }}" required>
+    </div>
+    <div class="form-group">
+      <label class="title" for="content">Content</label>
+      <textarea class="form-control" id="content" name="content" rows="10" required>{{ post.content if post else '' }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-success">{% if post %}Save Changes{% else %}Add Post{% endif %}</button>
+    <a href="{{ url_for('admin') }}" class="btn btn-secondary">Cancel</a>
+  </form>
+{% endblock %} 

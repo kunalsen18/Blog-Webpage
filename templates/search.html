@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+  <h1>Search Results for "{{ query }}"</h1>
+  {% for post in posts %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h2 class="card-title"><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
+        <p class="card-text">{{ post.content | truncate(100) }}</p>
+        <p class="card-text"><small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small></p>
+      </div>
+    </div>
+  {% else %}
+    <p>No internal blog posts found for your search query.</p>
+  {% endfor %}
+
+  {% if google_search_results %}
+    <h2 class="mt-5">Google Search Results</h2>
+    {% for result in google_search_results %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h2 class="card-title"><a href="{{ result.link }}" target="_blank">{{ result.title }}</a></h2>
+          <p class="card-text">{{ result.snippet }}</p>
+          <p class="card-text"><small class="text-muted"><a href="{{ result.link }}" target="_blank">{{ result.link }}</a></small></p>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No Google search results found for your query.</p>
+  {% endif %}
+{% endblock %}

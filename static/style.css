@@ -1,0 +1,100 @@
+/* Add your custom styles here */
+
+body {
+    background-color: #f8f9fa; /* Light gray background */
+    color: #343a40; /* Dark text color */
+}
+
+.navbar {
+    background-color: rgba(255, 255, 255, 0.01); /* Very subtle background for backdrop-filter */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    border-bottom: none; /* Remove border */
+}
+
+.navbar-brand,
+.nav-link {
+    color: #007bff !important; /* Blue links */
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+    color: #0056b3 !important;
+}
+
+.form-control {
+    border-color: #007bff;
+}
+
+.btn-outline-success {
+    color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.blog-post-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: #ffffff; /* White card background */
+}
+
+.blog-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: #007bff; /* Consistent blue color for all headings */
+}
+
+.blog-post-card .card-title a {
+    color: #007bff; /* Consistent blue color for all headings */
+    text-decoration: none;
+}
+
+.blog-post-card .card-title a:hover {
+    text-decoration: underline;
+}
+
+.blog-post-card .card-text {
+    color: #6c757d; /* Gray text */
+}
+
+.blog-post-card .text-muted {
+    color: #4b5054 !important; /* Lighter gray for date */
+}
+/* .text-center{
+     color: white; - Removed to avoid conflict with heading colors 
+}*/
+.title{
+    color: #007bff; /* Consistent blue color for all headings */
+    font-weight: bold;
+}
+
+h1 {
+    color: #8fbdee; /* Consistent blue color for all headings */
+    font-weight: bold;
+    text-align: center;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.01); /* A more attractive light blue with transparency */
+    backdrop-filter: blur(5px); /* Apply blur effect */
+    box-shadow: 0 8px 32px #1f26871a, 0 0 24px #d4af3733;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.blog-post-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: #e3f2fd; /* A slightly different light blue for blog post cards */
+}
