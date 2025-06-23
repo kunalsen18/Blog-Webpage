@@ -7,7 +7,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Ensure the database is created when the app starts
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy()
 db.init_app(app)
