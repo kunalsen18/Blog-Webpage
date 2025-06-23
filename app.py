@@ -7,11 +7,12 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Ensure the database is created when the app starts
-with app.app_context():
-    db.create_all()
+db = SQLAlchemy(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+
+with app.app_context():
+    db.create_all()
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
