@@ -9,7 +9,8 @@ app = Flask(__name__)
 # Ensure the database is created when the app starts
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+db = SQLAlchemy()
+db.init_app(app)
 
 with app.app_context():
     db.create_all()
@@ -26,6 +27,9 @@ class Post(db.Model):
 @app.route('/')
 def index():
     posts = Post.query.order_by(Post.date_posted.desc()).all()
+    if not posts:
+        # Handle case where no posts are found, e.g., display a message
+        return render_template('index.html', posts=posts, message="No posts found. Add some posts from the admin panel!")
     return render_template('index.html', posts=posts)
 
 @app.route('/post/<int:post_id>')
