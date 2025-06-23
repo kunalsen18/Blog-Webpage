@@ -12,8 +12,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy()
 db.init_app(app)
 
-with app.app_context():
-    db.create_all()
+db_initialized = False
+
+@app.before_request
+def initialize_database():
+    global db_initialized
+    if not db_initialized:
+        db.create_all()
+        db_initialized = True
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
