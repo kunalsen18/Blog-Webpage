@@ -12,7 +12,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy()
 db.init_app(app)
 
-with app.app_context():
+@app.before_first_request
+def create_tables():
     db.create_all()
 
 class Post(db.Model):
